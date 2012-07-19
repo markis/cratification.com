@@ -1,0 +1,2 @@
+{"ts":1342647987546,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1342648062893,"patch":[[{"diffs":[[1,"var restify = require('restify');\n\nfunction respond(req, res, next) {\n  res.send('hello ' + req.params.name);\n}\n\nvar server = restify.createServer();\nserver.get('/hello/:name', respond);\nserver.head('/hello/:name', respond);\n\nserver.listen(8080, function() {\n  console.log('%s listening at %s', server.name, server.url);\n});"]],"start1":0,"start2":0,"length1":0,"length2":324}]],"length":324,"saved":false}
