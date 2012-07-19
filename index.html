@@ -6,8 +6,12 @@
 
 <script type="text/javascript">
 if (window.location.hash) {
-    $.getJSON('/animation/' + window.location.hash.replace('#', ''), function (data) { cratify(data) });
+    var id = window.location.hash.replace('#', '');
+    $.getJSON('/animation/' + id, cratify);
 }
 </script>
 </head>
+<body>
+<title>Cratification</title>
+</body>
 </html>
