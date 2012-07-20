@@ -18,9 +18,9 @@ app.configure(function(){
     app.use(express.bodyParser());
 	//app.use(assetsMiddleware);
     
-    //app.set('views', __dirname + '/views');
-    //app.register('.html', ejs);
-    //app.set('view engine', 'ejs');
+    app.set('views', __dirname + '/views');
+    app.register('.html', ejs);
+    app.set('view engine', 'ejs');
     
     app.use(express.methodOverride());
     app.use(express.favicon(__dirname + '/public/favicon.ico', {maxAge: 31557600000}));
@@ -36,11 +36,6 @@ app.configure('production', function(){
     app.enable('view cache');
     app.use(express.errorHandler());
     app.use(express.static(__dirname + '/public', { maxAge: 31557600000 }));
-    
-    app.use(function (req, res, next) {
-        res.removeHeader("X-Powered-By");
-        next();
-    });
 });
 
 app.get('/', function(req, res) {
