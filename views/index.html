@@ -1,17 +1,126 @@
 <html>
 <head>
+
+<title>Cratification</title>
+<style type="text/css">
+body,html {
+    padding: 0px;
+    margin: 0px;
+}
+#container {
+    width: 1024px; 
+    height: 300px; 
+    border: 1px solid black;
+    margin: auto;
+}
+</style>
+</head>
+<body>
+<div id="container">
+    <span id="ampersand">&amp;</span>
+</div>
+
+<div id="container">
+    <input type="text" placeholder="left text" />
+    
+    <input type="text" placeholder="right text" />
+</div>
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/js/cratify.js"></script>
-
 <script type="text/javascript">
-if (window.location.hash) {
-    var id = window.location.hash.replace('#', '');
-    $.getJSON('/animation/' + id, cratify);
-}
+$(function() {
+    var $container = $("#container");
+    var $ampersand = $("#ampersand");
+    var data = [
+      {
+        "left": {
+          "text": "Crate",
+          "animationIn": "flyInLeft",
+          "animationOut": "flyOutDown"
+        },
+        "right": {
+          "text": "Barrel",
+          "animationIn": "flyInRight",
+          "animationOut": "flyOutUp"
+        }
+      },
+      {
+        "left": {
+          "text": "Crate",
+          "animationIn": "flyInLeft",
+          "animationOut": "flyOutDown"
+        },
+        "right": {
+          "text": "Barrel",
+          "animationIn": "flyInRight",
+          "animationOut": "flyOutUp"
+        }
+      },
+      {
+        "left": {
+          "text": "Crate",
+          "animationIn": "flyInLeft",
+          "animationOut": "flyOutDown"
+        },
+        "right": {
+          "text": "Barrel",
+          "animationIn": "flyInRight",
+          "animationOut": "flyOutUp"
+        }
+      },
+      {
+        "left": {
+          "text": "Crate",
+          "animationIn": "flyInLeft",
+          "animationOut": "flyOutDown"
+        },
+        "right": {
+          "text": "Barrel",
+          "animationIn": "flyInRight",
+          "animationOut": "flyOutUp"
+        }
+      },
+      {
+        "left": {
+          "text": "Crate",
+          "animationIn": "flyInLeft",
+          "animationOut": "flyOutDown"
+        },
+        "right": {
+          "text": "Barrel",
+          "animationIn": "flyInRight",
+          "animationOut": "flyOutUp"
+        }
+      },
+      {
+        "left": {
+          "text": "Crate",
+          "animationIn": "flyInLeft",
+          "animationOut": "flyOutDown"
+        },
+        "right": {
+          "text": "Barrel",
+          "animationIn": "flyInRight",
+          "animationOut": "flyOutUp"
+        }
+      },
+      {
+        "left": {
+          "text": "Crate",
+          "animationIn": "flyInLeft",
+          "animationOut": "flyOutDown"
+        },
+        "right": {
+          "text": "Barrel",
+          "animationIn": "flyInRight",
+          "animationOut": "flyOutUp"
+        }
+      }
+    ]
+    cratify(data, $container, $ampersand);
+});
 </script>
-</head>
-<body>
-<title>Cratification</title>
 </body>
 </html>

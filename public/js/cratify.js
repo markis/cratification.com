@@ -1,246 +1,320 @@
-function cratify(animations) {
+var winWidth;
+var $container, $ampersand;
 
-    var IMG_URL = "http://images.crateandbarrel.com/is/image/Crate/CBBold?fmt=png-alpha&$t=%5Cfs52%5Cexpnd-8+";
-    var winHeight = $(window).height();
-    var winWidth = $(window).width();
-    
-    $("body").css({"overflow": "hidden", fontFamily:"helvetica", fontWeight: "bold", fontSize: 120});
-    var $container = $("<div />").css({"overflow": "hidden"}).appendTo("body");
-    
-    var $ampersand = $("<span />").html("&").css({position:"absolute"}).appendTo($container);
-    
-    
+function cratify(animations, container, ampersand) {
+
+    $container = container ? container : $("<div />").css({"overflow": "hidden", width: $(window).width(), height: $(window).height() }).appendTo("body");
+    $ampersand = ampersand ? ampersand : $("<span />").html("&").css({position:"relative"}).appendTo($container);
+    //winHeight = $container.height();
+    winWidth = $container.width();
+    $container.css({"overflow": "hidden", fontFamily:"helvetica", fontWeight: "bold", fontSize: 120});
+    $ampersand.css("position", "absolute");
     $ampersand.position({
         my: "center",
         at: "center",
-        of: $(window),
-        collision: "fit",
-        using: positionEverything
+        of: $container
     });
-    
-    function positionEverything(windowPos) {
-        $ampersand.css(windowPos); 
-        for (i=0; i<animations.length; i++)
-        {
-            var animation = animations[i];
-            animation.left.element = $("<span />").html(animation.left.text).css({ position:"absolute",padding:0,overflow:"hidden",visibility:"hidden"}).appendTo($container);
-            animation.right.element = $("<span />").html(animation.right.text).css({ position:"absolute",padding:0,overflow:"hidden",visibility:"hidden"}).appendTo($container);
-            animation.left.element.position({
-                my: "right center",
-                at: "left center",
-                of: $ampersand,
-                collision: "fit",
-                using: function(pos) {animation.left.pos= pos;}
-            })
-            animation.right.element.position({
-                my: "left center",
-                at: "right center",
-                of: $ampersand,
-                collision: "fit",
-                using: function(pos) {animation.right.pos= pos;}
-            })
-        }
-    }
     
     var left = 0;
     var right = 0;
-    for (i=0; i<animations.length; i++)
+    for (var i=0; i<animations.length; i++)
     {
-           
         $('body')
         // left side
         .delay(1000, 'leftChain')
-        .queue('leftChain', function(next){
-            runAnimation(animations[left].left, 'in', next);
-        })
+        .queue('leftChain', queueLeftIn)
         .delay(1000, 'leftChain')
-        .queue('leftChain', function(next){  
-            runAnimation(animations[left].left, 'out', next);
-            left++;
-        })
+        .queue('leftChain', queueLeftOut)
         // right side
         .delay(1000, 'rightChain')
-        .queue('rightChain', function(next){
-            runAnimation(animations[right].right, 'in', next);
-        })
+        .queue('rightChain', queueRightIn)
         .delay(1000, 'rightChain')
-        .queue('rightChain', function(next){  
-            runAnimation(animations[right].right, 'out', next);
-            right++;
-        });
+        .queue('rightChain', queueRightOut);
     }
-    $('body').queue('leftChain');
-    $('body').queue('rightChain');
     
+    // These functions are defined as such, so that we don't define
+    // anonymous functions in a for loop
+    function queueLeftIn(next){
+        var animation = animations[left].left;
+        animation.inOut = 'in';
+        animation.leftRight = 'left';
+        Animations.runAnimation(animation, next);
+    }
+    function queueLeftOut(next){  
+        var animation = animations[left].left;
+        animation.inOut = 'out';
+        animation.leftRight = 'left';
+        Animations.runAnimation(animation, next);
+        left++;
+    }
+    function queueRightIn(next){
+        var animation = animations[right].right;
+        animation.inOut = 'in';
+        animation.leftRight = 'right';
+        Animations.runAnimation(animation, next);
+    }    
+    function queueRightOut(next) { 
+        var animation = animations[right].right;
+        animation.inOut = 'out';
+        animation.leftRight = 'right';
+        Animations.runAnimation(animation, next);
+        right++;
+    }
+    
+    $('body').queue('leftChain');
     $('body').dequeue('leftChain');
+    
+    $('body').queue('rightChain');
     $('body').dequeue('rightChain');
     
-    /********************************************************************
     
-        Define Animations
-    
-    ********************************************************************/
-    function runAnimation(animation, inOut, next) {
-        if (inOut == 'out') {
-            switch(animation.animationOut)
-            {
-            case "fadeOut": fadeOut(animation, next); break;
-            case "flyOutUp": flyOutUp(animation, next); break;
-            case "flyOutLeft": flyOutLeft(animation, next); break;
-            case "flyOutRight": flyOutRight(animation, next); break;
-            default: case "flyOutDown": flyOutDown(animation, next); break;               
-            }
-        } else {
-            switch(animation.animationIn)
-            {
-            case "revealDown": revealDown(animation, next); break;
-            case "revealDownHalf": revealDownHalf(animation, next); break;
-            case "revealUp": revealUp(animation, next); break;
-            case "revealUpHalf": revealUpHalf(animation, next); break;
-            case "fadeIn": fadeIn(animation, next); break;
-            case "flyInUp": flyInUp(animation, next); break;
-            case "flyInLeft": flyInLeft(animation, next); break;
-            case "flyInRight": flyInRight(animation, next); break;
-            case "flyInSlot": flyInSlot(animation, next); break;
-            default: case "flyInDown": flyInDown(animation, next); break;
-            }
-        }
-    }
-    
-    function flyInUp(animation, next) {
-        var pos = animation.pos;
-        var element = animation.element;
-        element.css({visibility:"visible", left: pos.left, top: winHeight})
-        .animate({top: pos.top}, {duration:1000, queue:false, complete: next});
-    }
-    
-    function flyInDown(animation, next) {
-        var pos = animation.pos;
-        var element = animation.element;
-        element.css({visibility:"visible", left: pos.left, top: element.height() * 2 * -1})
-        .animate({top: pos.top}, {duration:1000, queue:false, complete: next});
-    }
-    
-    function flyInLeft(animation, next) {
-        var pos = animation.pos;
-        var element = animation.element;
-        element.css({visibility:"visible", left: element.width() * 2 * -1, top: pos.top})
-        .animate({left: pos.left}, {duration:1000, queue:false, complete: next});
-    }
-    
-    function flyInRight(animation, next) {
-        var pos = animation.pos;
-        var element = animation.element;
-        element
-        .css({visibility:"visible", left: element.width() * 2 * -1, top: pos.top})
-        .animate({left: pos.left}, {duration:1000, queue:false, complete: next});
-    }
-    
-    function flyInSlot(animation, next) {
-        var pos = animation.pos;
-        var element = animation.element;
-        var beginningTop = element.height() * 2 * -1;
-        element
-            .css({visibility:"visible", left: pos.left, top: beginningTop })
-        .animate({left: pos.left}
-           , {
-               duration:200
-               , queue:false
-               , complete: function() {
-               element.css({top: beginningTop })
-                   .animate({top: winHeight}
-               , {
-               duration:200
-               , queue:false
-               , complete: function() {
-                   element.css({top: beginningTop })
-               .animate({top: winHeight}
-               , {
-               duration:200
-               , queue:false
-               , complete: function() {
-                   element.css({top: beginningTop })
-                       .animate({top: pos.top}
-               , {
-               duration:200
-               , queue:false
-               , complete: function() {
-                   next();
-                       
-               }})
-               }})
-               }})
-               }});
-    }
-                   
-    function fadeIn(animation, next) {
-        var pos = animation.pos;
-        var element = animation.element;
-        element.hide().css({visibility:"visible",left: pos.left, top: pos.top}).fadeIn(1000, next);
-    }
-                   
-    function revealDownHalf(animation, next) {
-        var pos = animation.pos;
-        var element = animation.element;
-        var height = element.height();
-        var halfHeight = height / 2;
-        element.css({visibility:"visible",left: pos.left, top: pos.top, height:1})
-        .animate({height: halfHeight}, {duration:1000, queue:false, complete: next})
-    }
-                   
-    function revealDown(animation, next) {
-        var pos = animation.pos;
-        var element = animation.element;
-        var height = element.height();
-        element.css({visibility:"visible",left: pos.left, top: pos.top, height:1})
-        .animate({height: height}, {duration:1000, queue:false, complete: next})
-    }
-                   
-    function revealUp(animation, next) {
-        var pos = animation.pos;
-        var element = animation.element;
-        var height = element.height() - 10;
-        element.css({visibility:"visible",left: pos.left, top: pos.top + (height-1), height:1})
-            .animate({height: height, top: pos.top}, {duration:1000, queue:false, complete: next})
-    }
-            
-    function revealUpHalf(animation, next) {
-        var pos = animation.pos;
-        var element = animation.element;
-        var height = element.height() - 10;
-        var halfHeight = height / 2;
-        element.css({visibility:"visible",left: pos.left, top: pos.top + (height-1), height:1})
-            .animate({height: halfHeight, top: (pos.top+halfHeight)}, {duration:1000, queue:false, complete: next})
-    }
-    
-    function flyOutUp(animation, next) {
-        var pos = animation.pos;
-        var element = animation.element;
-        element.animate({top: element.height() * 2 * -1}, {duration:1000, queue:false, complete: next});
-    }
-    
-    function flyOutDown(animation, next) {    
-        var pos = animation.pos;
-        var element = animation.element;
-        element.animate({top: winHeight}, {duration:1000, queue:false, complete: next });
-    }
-    
-    function flyOutLeft(animation, next) {    
-        var pos = animation.pos;
-        var element = animation.element;
-        element.animate({left: element.width() * 2 * -1}, {duration:1000, queue:false, complete: next });
-    }
-    
-    function flyOutRight(animation, next) {    
-        var pos = animation.pos;
-        var element = animation.element;
-        element.animate({left: winWidth}, {duration:1000, queue:false, complete: next });
-    }
-        
-    function fadeOut(animation, next) {
-        var pos = animation.pos;
-        var element = animation.element;
-        element.fadeOut(1000, next);
-    }
 
 }
+
+
+/********************************************************************
+
+    Define Animations
+
+********************************************************************/
+var Animations = {
+    runAnimation : function(animation, next) {
+        var animateIn = Animations['in'];
+        var animateOut = Animations.out;
+        if (animation.inOut == 'out') {
+            var fx = animateOut[animation.animationOut];
+            if (fx) {
+                fx(animation, next);
+            } else {
+                animateOut.flyOutDown(animation, next);
+            }
+        } else {
+            var fx = animateIn[animation.animationIn];
+            if (fx) {
+                fx(animation, next);
+            } else {
+                animateOut.flyInDown(animation, next);
+            }
+        }
+    },
+    'in' : {
+
+        flyInUp : function(animation, next) {
+            var endPos;
+            var element = animation.element = $("<span />").html(animation.text).css({position:"relative"}).appendTo($container);
+            element.position({
+                my: "top",
+                at: "bottom",
+                of: $container,
+                using: function (pos) { element.css({top: pos.top}); }
+            })
+            // end position
+            .position({
+                my: animation.leftRight==='right'?"left center":"right center",
+                at: animation.leftRight==='right'?"right center":"left center",
+                of: $ampersand,
+                using: function (pos) { endPos = pos; element.css({left: pos.left}); }
+            })
+            //.css({visibility:"visible"})
+            .animate({top: endPos.top}, {duration:1000, queue:false, complete: next});
+        },
+        
+        flyInDown : function(animation, next) {
+            var endPos;
+            var element = animation.element = $("<span />").html(animation.text).css({position:"relative"}).appendTo($container)
+            // start position
+            .position({
+                my: "bottom",
+                at: "top",
+                of: $container,
+                using: function (pos) { element.css({top: pos.top}); }
+            })
+            // end position
+            .position({
+                my: animation.leftRight==='right'?"left center":"right center",
+                at: animation.leftRight==='right'?"right center":"left center",
+                of: $ampersand,
+                using: function (pos) { endPos = pos; element.css({left: pos.left}); }
+            })
+            //.css({visibility:"visible"}) //, left: pos.left, top: element.height() * 2 * -1})
+            .animate({top: endPos.top}, {duration:1000, queue:false, complete: next});
+        },
+        
+        flyInLeft : function(animation, next) {
+            var endPos;
+            var element = animation.element = $("<span />").html(animation.text).css({position:"relative"}).appendTo($container);          
+            element
+            // start position
+            .position({
+                my: "right center",
+                at: "left center",
+                of: $container
+            })
+            // end position
+            .position({
+                my: animation.leftRight==='right'?"left center":"right center",
+                at: animation.leftRight==='right'?"right center":"left center",
+                of: $ampersand,
+                using: function (pos) { endPos = pos; }
+            })
+            //.css({visibility:"visible"}) //, left: element.width() * 2 * -1, top: pos.top})
+            .animate({left: endPos.left}, {duration:1000, queue:false, complete: next});
+        },
+        
+        flyInRight : function(animation, next) {
+            var endPos;
+            var element = animation.element = $("<span />").html(animation.text).css({position:"relative"}).appendTo($container);            
+            element
+            // start position
+            .position({
+                my: "left center",
+                at: "right center",
+                of: $container,
+                using: function (startPos) { 
+                    // I am not sure why the positioning math always put the element on the right side during
+                    // testing, but I compensated for it with this little winWidth and element.width() addition
+                    startPos.left = startPos.left + winWidth + element.width();
+                    element.css(startPos); }
+            })
+            // end position
+            .position({
+                my: animation.leftRight==='right'?"left center":"right center",
+                at: animation.leftRight==='right'?"right center":"left center",
+                of: $ampersand,
+                using: function (pos) { endPos = pos; }
+            })
+            //.css({visibility:"visible"}) //, left: (element.width() * 2) + winWidth, top: pos.top})
+            .animate({left: endPos.left}, {duration:1000, queue:false, complete: next});
+        },
+        
+        flyInSlot : function(animation, next) {
+            var endPos, bottomPos, topPos;
+            var element = animation.element = $("<span />").html(animation.text).css({visibility:"hidden",position:"relative"}).appendTo($container);
+            element
+            .position({
+                my: animation.leftRight==='right'?"left center":"right center",
+                at: animation.leftRight==='right'?"right center":"left center",
+                of: $ampersand,
+                using: function (pos) { endPos = pos; }
+            })
+            // bottom of the container position
+            .position({
+                my: "bottom",
+                at: "top",
+                of: $container,
+                using: function (pos) { bottomPos = pos; }
+            })
+            // top of the container position
+            .position({
+                my: "top",
+                at: "bottom",
+                of: $container,
+                using: function (pos) { topPos = pos; }
+            })
+            .css({visibility:"visible", left: endPos.left, top: topPos.top })
+                .animate({left: endPos.left},
+                   {duration:200, queue:false, complete: function() {
+                       element.css({top: topPos.top })
+                       .animate({top: bottomPos.top},
+                            {duration:200, queue:false, complete: function() {
+                                element.css({top: topPos.top })
+                                .animate({top: bottomPos.top},
+                                    {duration:200, queue:false, complete: function() {
+                                        element.css({top: topPos.top })
+                                        .animate({top: endPos.top},
+                                            {duration:200, queue:false, complete: function() {
+                                                next();
+                                        }});
+                                }});
+                       }});
+                }});
+        },
+                       
+        fadeIn : function(animation, next) {
+            animation.element = $("<span />").html(animation.text).css({position:"relative"}).appendTo($container)
+            .position({
+                my: animation.leftRight==='right'?"left center":"right center",
+                at: animation.leftRight==='right'?"right center":"left center",
+                of: $ampersand
+            }).hide().fadeIn(1000, next);
+        }
+
+    },
+    out : {
+
+        flyOutUp : function(animation, next) {
+            var element = animation.element;
+            element.position({
+                my: "top",
+                at: "bottom",
+                of: $container,
+                using: function (pos) {
+                    console.log(pos);
+                    element.animate({top: pos.top}, {duration:1000, queue:false, complete: function () {
+                        
+                        delete animation.element;
+                        $container[0].removeChild(element[0]);
+                        next();
+                    }});
+                }
+            });
+        },
+
+        flyOutDown : function(animation, next) {    
+            var element = animation.element;
+            element.position({
+                my: "bottom",
+                at: "top",
+                of: $container,
+                using: function (pos) {
+                    console.log(pos);
+                    element.animate({top: pos.top}, {duration:1000, queue:false, complete: function () {
+                        
+                        delete animation.element;
+                        $container[0].removeChild(element[0]);
+                        next();
+                    }});
+                }
+            });
+        },
+
+        flyOutLeft : function(animation, next) {   
+            var endPos;
+            var element = animation.element;
+            element.position({
+                my: "left",
+                at: "right",
+                of: $container,
+                using: function (pos) { endPos = pos; }
+            }).animate({left: endPos.left}, {duration:1000, queue:false, complete: function () {
+                delete animation.element;
+                $container[0].removeChild(element[0]);
+                next();
+            } });
+        },
+        
+        flyOutRight : function(animation, next) {  
+            var endPos;
+            var element = animation.element;
+            element.position({
+                my: "right",
+                at: "left",
+                of: $container,
+                using: function (pos) { endPos = pos; }
+            }).animate({left: endPos.left}, {duration:1000, queue:false, complete: function () {
+                delete animation.element;
+                $container[0].removeChild(element[0]);
+                next();
+            } });
+        },
+            
+        fadeOut : function(animation, next) {
+            var element = animation.element;
+            element.fadeOut(1000, function () {
+                delete animation.element;
+                $container[0].removeChild(element[0]);
+                next();
+            });
+        }
+    }
+};

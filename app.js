@@ -42,6 +42,10 @@ app.get('/', function(req, res) {
     res.sendfile(__dirname + '/views/index.html');
 });
 
+app.get('/view', function(req, res) {
+    res.sendfile(__dirname + '/views/view.html');
+});
+
 app.get('/animation/:id', function(req, res) {
     dataprovider.findById(req.params.id, function (err, data) {
         if (data && data.animations)
@@ -51,7 +55,7 @@ app.get('/animation/:id', function(req, res) {
         else
     	{
             res.statusCode = 404;
-        	res.end('no data');
+        	res.json([]);
     	}
     });
 });
