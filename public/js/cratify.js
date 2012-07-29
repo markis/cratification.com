@@ -32,6 +32,8 @@ function cratify(animations, container, ampersand) {
         .queue('rightChain', queueRightOut);
     }
     
+    var Animations = new AnimationsObj($container, $ampersand);
+    
     // These functions are defined as such, so that we don't define
     // anonymous functions in a for loop
     function queueLeftIn(next){
@@ -66,9 +68,6 @@ function cratify(animations, container, ampersand) {
     
     $('body').queue('rightChain');
     $('body').dequeue('rightChain');
-    
-    
-
 }
 
 
@@ -77,21 +76,26 @@ function cratify(animations, container, ampersand) {
     Define Animations
 
 ********************************************************************/
-var Animations = {
+function AnimationsObj($container, $ampersand) {
+    this.$container = $container;
+    this.$ampersand = $ampersand;
+}
+
+AnimationsObj.prototype = {
     runAnimation : function(animation, next) {
-        var animateIn = Animations['in'];
-        var animateOut = Animations.out;
+        var animateIn = this['in'];
+        var animateOut = this.out;
         if (animation.inOut == 'out') {
-            var fx = animateOut[animation.animationOut];
-            if (fx) {
-                fx(animation, next);
+            var fxOut = animateOut[animation.animationOut];
+            if (fxOut) {
+                fxOut(animation, next);
             } else {
                 animateOut.flyOutDown(animation, next);
             }
         } else {
-            var fx = animateIn[animation.animationIn];
-            if (fx) {
-                fx(animation, next);
+            var fxIn = animateIn[animation.animationIn];
+            if (fxIn) {
+                fxIn(animation, next);
             } else {
                 animateOut.flyInDown(animation, next);
             }
