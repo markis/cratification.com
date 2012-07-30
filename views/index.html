@@ -13,7 +13,7 @@ body,html {
     border: 1px solid black;
     margin: auto;
 }
-#entry {
+#entryForm {
     width: 1024px;
     margin: auto;
 }
@@ -68,10 +68,37 @@ function CreateOutDropDown() {
 }
 
 function GetData() {
-    
+    var data = [];
+    $("#entry > div").each(function (idx, elem) { 
+        var $elem = $(elem); 
+        var leftText = $elem.find("input.left").val();
+        var leftAnimationIn = $elem.find("select.animationIn.left").val();
+        var leftAnimationOut = $elem.find("select.animationOut.left").val();
+        
+        var rightText = $elem.find("input.right").val();
+        var rightAnimationIn = $elem.find("select.animationIn.right").val();
+        var rightAnimationOut = $elem.find("select.animationOut.right").val();
+        
+        data.push({
+            "left": {
+              "text": leftText,
+              "animationIn": leftAnimationIn,
+              "animationOut": leftAnimationOut
+            },
+            "right": {
+              "text": rightText,
+              "animationIn": rightAnimationIn,
+              "animationOut": rightAnimationOut
+            }  
+        });
+    });
+    return data;
 }
 function TestData() {
-    
+    var data = GetData();
+    var $container = $("#container");
+    var $ampersand = $("#ampersand");
+    new Cratify(data, $container, $ampersand);
 }
 function SaveData() {
     
