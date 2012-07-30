@@ -303,12 +303,6 @@ Animations.prototype = {
                 animation.element.animate({left: pos.left}, {duration:1000, queue:false, complete: completeAnimate});
             }
             animation.element.position({
-                my: "left",
-                at: "right",
-                of: $container,
-                using: function (pos) { }
-            });
-            animation.element.position({
                 my: "right",
                 at: "left",
                 of: $container,
@@ -326,12 +320,6 @@ Animations.prototype = {
             function animate (pos) {
                 animation.element.animate({left: pos.left}, {duration:1000, queue:false, complete: completeAnimate});
             }
-            animation.element.position({
-                my: "right",
-                at: "left",
-                of: $container,
-                using: function (pos) { }
-            });
             animation.element.position({
                 my: "right",
                 at: "left",
