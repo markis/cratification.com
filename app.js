@@ -47,7 +47,8 @@ app.get('/view', function(req, res) {
 });
 
 app.post('/animation', function(req, res) {
-    dataprovider.save(req.body, function (err, data) {
+    var data = JSON.parse(req.body);
+    dataprovider.save(data, function (err, data) {
         res.json({err:err, data:data});
     });
 });
