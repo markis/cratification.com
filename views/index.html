@@ -102,7 +102,9 @@ function TestData() {
     return false;
 }
 function SaveData() {
-        return false;
+    var data = GetData();
+    $.ajax('/animation', {data: data, dataType:'json', success: function () { window.location.reload() }});
+    return false;
 }
 
 $(function() {

@@ -46,6 +46,12 @@ app.get('/view', function(req, res) {
     res.sendfile(__dirname + '/views/view.html');
 });
 
+app.post('/animation', function(req, res) {
+    dataprovider.save(req.body, function (err, data) {
+        res.json({err:err, data:data});
+    });
+});
+
 app.get('/animation/:id', function(req, res) {
     dataprovider.findById(req.params.id, function (err, data) {
         if (data && data.animations)
