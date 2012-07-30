@@ -22,8 +22,8 @@ body,html {
     <span id="ampersand">&amp;</span>
 </div>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.js"></script>
 <script type="text/javascript" src="/js/cratify.js"></script>
 
 <script type="text/javascript">
@@ -36,7 +36,7 @@ $(function() {
             $container.css({height: $(window).height(), width: $(window).width() });
             
             var id = window.location.hash.replace('#', '');
-            $.getJSON('/animation/' + id, function (data) { cratify(data, $container, $ampersand); });
+            $.getJSON('/animation/' + id, function (data) { new Cratify(data, $container, $ampersand); });
         }
     }
     loadHash();

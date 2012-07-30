@@ -24,8 +24,8 @@ body,html {
     <input type="text" placeholder="left text" /><input type="text" placeholder="right text" />
 </div>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.js"></script>
 <script type="text/javascript" src="/js/cratify.js"></script>
 <script type="text/javascript">
 function CreateInDropDown() {
@@ -43,16 +43,16 @@ $(function() {
         "left": {
           "text": "Crate",
           "animationIn": "flyInLeft",
-          "animationOut": "flyOutDown"
+          "animationOut": "flyOutUp"
         },
         "right": {
           "text": "Barrel",
           "animationIn": "flyInRight",
-          "animationOut": "flyOutUp"
+          "animationOut": "flyOutDown"
         }
       }
     ]
-    cratify(data, $container, $ampersand);
+    new Cratify(data, $container, $ampersand);
 });
 </script>
 </body>
