@@ -117,19 +117,18 @@ Animations.prototype = {
 
         flyInUp : function(animation, $container, $ampersand, next) {
             var endPos;
-            var element = animation.element = $("<span />").html(animation.text).css({position:"relative"}).appendTo($container);
+            animation.element = $("<span />").html(animation.text).css({position:"relative"}).appendTo($container);
             element.position({
                 my: "top",
                 at: "bottom",
-                of: $container,
-                using: function (pos) { element.css({top: pos.top}); }
+                of: $container
             })
             // end position
             .position({
                 my: animation.leftRight==='right'?"left center":"right center",
                 at: animation.leftRight==='right'?"right center":"left center",
                 of: $ampersand,
-                using: function (pos) { endPos = pos; element.css({left: pos.left}); }
+                using: function (pos) { endPos = pos }
             })
             //.css({visibility:"visible"})
             .animate({top: endPos.top}, {duration:1000, queue:false, complete: next});
@@ -137,20 +136,19 @@ Animations.prototype = {
 
         flyInDown : function(animation, $container, $ampersand, next) {
             var endPos;
-            var element = animation.element = $("<span />").html(animation.text).css({position:"relative"}).appendTo($container)
+            animation.element = $("<span />").html(animation.text).css({position:"relative"}).appendTo($container)
             // start position
             .position({
                 my: "bottom",
                 at: "top",
-                of: $container,
-                using: function (pos) { element.css({top: pos.top}); }
+                of: $container
             })
             // end position
             .position({
                 my: animation.leftRight==='right'?"left center":"right center",
                 at: animation.leftRight==='right'?"right center":"left center",
                 of: $ampersand,
-                using: function (pos) { endPos = pos; element.css({left: pos.left}); }
+                using: function (pos) { endPos = pos; }
             })
             //.css({visibility:"visible"}) //, left: pos.left, top: element.height() * 2 * -1})
             .animate({top: endPos.top}, {duration:1000, queue:false, complete: next});
