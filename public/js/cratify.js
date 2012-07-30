@@ -130,7 +130,7 @@ Animations.prototype = {
                 of: $ampersand,
                 using: function (pos) { endPos = pos }
             })
-            //.css({visibility:"visible"})
+            .css({left:endPos.left})
             .animate({top: endPos.top}, {duration:1000, queue:false, complete: next});
         },
 
@@ -150,7 +150,7 @@ Animations.prototype = {
                 of: $ampersand,
                 using: function (pos) { endPos = pos; }
             })
-            //.css({visibility:"visible"}) //, left: pos.left, top: element.height() * 2 * -1})
+            .css({left:endPos.left})
             .animate({top: endPos.top}, {duration:1000, queue:false, complete: next});
         },
 
