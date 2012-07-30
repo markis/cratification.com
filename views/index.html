@@ -13,6 +13,10 @@ body,html {
     border: 1px solid black;
     margin: auto;
 }
+#entry {
+    width: 1024px;
+    margin: auto;
+}
 </style>
 </head>
 <body>
@@ -20,22 +24,63 @@ body,html {
     <span id="ampersand">&amp;</span>
 </div>
 
-<div id="container">
-    <input type="text" placeholder="left text" /><input type="text" placeholder="right text" />
-</div>
+<form id="entryForm">
+<div id="entry"></div>
+</form>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.js"></script>
 <script type="text/javascript" src="/js/cratify.js"></script>
 <script type="text/javascript">
+function AddNewRowByButton(event) {
+    $(event.target).parent()[0].removeChild(event.target);
+    AddNewRow();
+}
+
+function AddNewRow() {
+    var form = $("<div />").appendTo($("#entry"));   
+    $("<input />").attr({type:"text",placeholder:"left text"}).addClass("left").appendTo(form);
+    CreateInDropDown().addClass("left").appendTo(form);
+    CreateOutDropDown().addClass("left").appendTo(form);
+    
+    $("<input />").attr({type:"text",placeholder:"right text"}).addClass("right").appendTo(form);
+    CreateInDropDown().addClass("right").appendTo(form);
+    CreateOutDropDown().addClass("right").appendTo(form);
+    
+    $("<button />").html("New Frame").click(AddNewRowByButton).appendTo(form);
+}
+
 function CreateInDropDown() {
-    var animationsIn = Animations["in"];
+    var $dropDown = $("<select />").addClass("animationIn");
+    for (animation in Animations.prototype["in"])
+    {
+        $dropDown.append(new Option(animation, animation, false, false));
+    }
+    return $dropDown;
 }
 function CreateOutDropDown() {
+    var $dropDown = $("<select />").addClass("animationOut");
+    for (animation in Animations.prototype["out"])
+    {
+        $dropDown.append(new Option(animation, animation, false, false));
+    }
+    return $dropDown;
+}
+
+function GetData() {
+    
+}
+function TestData() {
+    
+}
+function SaveData() {
     
 }
 
 $(function() {
+    AddNewRow();
+    $("<button />").html("Test").appendTo($("#entryForm")).click(TestData);
+    $("<button />").html("Save").appendTo($("#entryForm")).click(SaveData);
     var $container = $("#container");
     var $ampersand = $("#ampersand");
     var data = [
