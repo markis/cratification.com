@@ -103,7 +103,7 @@ function TestData() {
 }
 function SaveData() {
     var data = GetData();
-    $.ajax('/animation', {data: data, dataType:'json', success: function (x, y) { console.log(x); console.log(y) }});
+    $.ajax('/animation', {type: 'POST', data: data, dataType:'json', success: function (x, y) { console.log(x); console.log(y) }});
     return false;
 }
 
