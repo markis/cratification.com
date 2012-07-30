@@ -117,8 +117,8 @@ Animations.prototype = {
 
         flyInUp : function(animation, $container, $ampersand, next) {
             var endPos;
-            animation.element = $("<span />").html(animation.text).css({position:"relative"}).appendTo($container);
-            element.position({
+            animation.element = $("<span />").html(animation.text).css({position:"relative"}).appendTo($container)
+            .position({
                 my: "top",
                 at: "bottom",
                 of: $container
