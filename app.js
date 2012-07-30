@@ -48,7 +48,11 @@ app.get('/view', function(req, res) {
 
 app.post('/animation', function(req, res) {
     dataprovider.save(req.body, function (err, data) {
-        res.json({err:err, data:data});
+        if (err) {
+            res.json({success:false});
+        } else {
+            res.json({success:true, id:data.id});
+        }
     });
 });
 
