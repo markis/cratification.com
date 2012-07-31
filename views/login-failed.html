@@ -13,9 +13,9 @@ body,html {
     margin-top: 200px;
 }
 #password {
-    width: 300px;
+    width: 200px;
     margin: auto;   
-    border: solid 1px Red;
+    border: solid 1px RED;
     -webkit-box-shadow: 0 2px 6px #ECECEC inset;
     box-shadow: 0 2px 6px #ECECEC inset;
     box-sizing: content-box;
@@ -26,11 +26,23 @@ body,html {
     margin: 0;
     padding: 0 5px;
 }
+#submit {
+    border: solid 1px #1461A9;
+    background-color: #006AB7;
+    background-image: -moz-linear-gradient(top,#2576C2,#105DA5);
+    background-image: -ms-linear-gradient(top,#2576C2,#105DA5);
+    background-image: -o-linear-gradient(top,#2576C2,#105DA5);
+    background-image: -webkit-gradient(linear,0% 0%,0% 100%,from(#2576C2),to(#105DA5));
+    background-image: -webkit-linear-gradient(top,#2576C2,#105DA5);
+    color: white;
+    text-shadow: -1px -1px #0E599E;   
+}
 </style>
 </head>
 <body>
 <form id="container" action="/login" method="post">
     <input type="password" id="password" name="password" placeholder="password" />
+    <input type="submit" id="submit" value="Enter" />
 </form>
 
 </body>
