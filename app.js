@@ -16,6 +16,7 @@ var dataprovider = new DataProvider(config.database.server, config.database.port
 app.configure(function(){
     app.use(express.compress()); 
     app.use(express.bodyParser());
+    app.use(express.cookieParser());
 	//app.use(assetsMiddleware);
     
 //    app.set('views', __dirname + '/views');
@@ -38,12 +39,32 @@ app.configure('production', function(){
     app.use(express.static(__dirname + '/public', { maxAge: 31557600000 }));
 });
 
+//app.get('*', function(req, res, next) {
+//   if (req.cookies.valid !== 'true') {
+//       res.redirect('/login', 302);
+//   } else {
+//        next();   
+//   }
+//});
+
 app.get('/', function(req, res) {
     res.sendfile(__dirname + '/views/index.html');
 });
 
 app.get('/view', function(req, res) {
     res.sendfile(__dirname + '/views/view.html');
+});
+
+app.get('/login', function(req, res) {
+    res.sendfile(__dirname + '/views/login.html');
+});
+
+app.post('/login', function(req, res) {
+    if (req.body.password === 'Cr@t3') {
+        res.redirect('/', 302);
+    } else {
+        res.redirect('/login-failed', 302);
+    }
 });
 
 app.post('/animation', function(req, res) {

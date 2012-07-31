@@ -156,7 +156,6 @@ Animations.prototype = {
 
         flyInLeft : function(animation, $container, $ampersand, next) {
             var endPos;
-            function setEndPos(pos) { endPos = pos; };
             var element = animation.element = $("<span />").html(animation.text).css({position:"relative"}).appendTo($container);
             // start position
             element.position({
