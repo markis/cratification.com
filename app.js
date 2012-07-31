@@ -59,11 +59,15 @@ app.get('/login', function(req, res) {
     res.sendfile(__dirname + '/views/login.html');
 });
 
+app.get('/login-failed', function(req, res) {
+    res.sendfile(__dirname + '/views/login.html');
+});
+
 app.post('/login', function(req, res) {
     if (req.body.password === 'Cr@t3') {
-        res.redirect('/', 302);
+        res.redirect('/', '301');
     } else {
-        res.redirect('/login-failed', 302);
+        res.redirect('/login-failed', '301'); 
     }
 });
 
