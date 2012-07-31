@@ -33,7 +33,8 @@ $(function() {
             var $container = $("#container");
             var $ampersand = $("#ampersand");
             
-            $container.css({height: $(window).height(), width: $(window).width() });
+            var windowHeight = Math.max($(window).height(), self.innerHeight);
+            $container.css({height: , width: $(window).width() });
             
             var id = window.location.hash.replace('#', '');
             $.getJSON('/animation/' + id, function (data) { new Cratify(data, $container, $ampersand); });
