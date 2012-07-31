@@ -41,7 +41,7 @@ app.configure('production', function(){
 
 //app.get('*', function(req, res, next) {
 //   if (req.cookies.valid !== 'true') {
-//       res.redirect('/login', 302);
+//       res.redirect('/login');
 //   } else {
 //        next();   
 //   }
@@ -60,7 +60,7 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/login-failed', function(req, res) {
-    res.sendfile(__dirname + '/views/login.html');
+    res.sendfile(__dirname + '/views/login-failed.html');
 });
 
 app.post('/login', function(req, res) {
