@@ -65,9 +65,9 @@ app.get('/login-failed', function(req, res) {
 
 app.post('/login', function(req, res) {
     if (req.body.password === 'Cr@t3') {
-        res.redirect('/', '301');
+        res.redirect('/');
     } else {
-        res.redirect('/login-failed', '301'); 
+        res.redirect('/login-failed'); 
     }
 });
 
