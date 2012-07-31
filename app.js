@@ -40,7 +40,7 @@ app.configure('production', function(){
 });
 
 app.get('*', function(req, res, next) {
-   if (req.cookies.valid !== 'true') {
+   if (req.cookies.valid !== 'true' && req.url !== '/login' && req.url !== '/login-failed') {
        res.redirect('/login');
    } else {
         next();   
