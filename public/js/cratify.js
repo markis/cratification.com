@@ -266,8 +266,8 @@ Animations.prototype = {
                 animation.element.animate({top: pos.top}, {duration:1000, queue:false, complete: flyOutUpCompleteAnimate});
             }
             animation.element.position({
-                my: "top",
-                at: "bottom",
+                my: "bottom",
+                at: "top",
                 of: $container,
                 using: flyOutUpAnimate
             });
@@ -284,8 +284,8 @@ Animations.prototype = {
                 animation.element.animate({top: pos.top}, {duration:1000, queue:false, complete: flyOutDownCompleteAnimate});
             }
             animation.element.position({
-                my: "bottom",
-                at: "top",
+                my: "top",
+                at: "bottom",
                 of: $container,
                 using: flyOutDownAnimate
             });
