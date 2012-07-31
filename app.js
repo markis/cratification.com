@@ -65,7 +65,7 @@ app.get('/login-failed', function(req, res) {
 
 app.post('/login', function(req, res) {
     if (req.body.password === 'Cr@t3') {
-        res.cookie('valid', 'true', { expires: new Date(Date.now() + 900000), httpOnly: true });
+        res.cookie('valid', 'true', { expires: new Date(Date.now() + 31557600000), httpOnly: true });
         res.redirect('/');
     } else {
         res.redirect('/login-failed'); 
