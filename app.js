@@ -39,13 +39,13 @@ app.configure('production', function(){
     app.use(express.static(__dirname + '/public', { maxAge: 31557600000 }));
 });
 
-//app.get('*', function(req, res, next) {
-//   if (req.cookies.valid !== 'true') {
-//       res.redirect('/login');
-//   } else {
-//        next();   
-//   }
-//});
+app.get('*', function(req, res, next) {
+   if (req.cookies.valid !== 'true') {
+       res.redirect('/login');
+   } else {
+        next();   
+   }
+});
 
 app.get('/', function(req, res) {
     res.sendfile(__dirname + '/views/index.html');
