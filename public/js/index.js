@@ -8,12 +8,12 @@ $(function() {
       {
         "left": {
           "text": "Markis",
-          "animationIn": "flyInLeft",
+          "animationIn": "flyInRight",
           "animationOut": "flyOutUp"
         },
         "right": {
           "text": "Taylor",
-          "animationIn": "flyInRight",
+          "animationIn": "flyInLeft",
           "animationOut": "flyOutDown"
         }
       }
