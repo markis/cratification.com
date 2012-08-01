@@ -84,9 +84,6 @@ app.get('/animation/:id', function(req, res) {
     });
 });
 
-app.get('*', function(req, res) {
-    res.sendfile(__dirname + '/views/404.html');
-});
 
 app.listen(config.port);
 console.log("Express server listening");
