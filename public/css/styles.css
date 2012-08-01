@@ -23,14 +23,14 @@ button,
 input[type="button"]
 {
     border: solid 1px #1461A9;
-    background-color: #006AB7;
-    background-image: -moz-linear-gradient(top,#2576C2,#105DA5);
-    background-image: -ms-linear-gradient(top,#2576C2,#105DA5);
-    background-image: -o-linear-gradient(top,#2576C2,#105DA5);
-    background-image: -webkit-gradient(linear,0% 0%,0% 100%,from(#2576C2),to(#105DA5));
-    background-image: -webkit-linear-gradient(top,#2576C2,#105DA5);
+    background-color: #FAFAFA;
+    background-image: -moz-linear-gradient(top,#FFF,#E4E8EE);
+    background-image: -ms-linear-gradient(top,#FFF,#E4E8EE);
+    background-image: -o-linear-gradient(top,#FFF,#E4E8EE);
+    background-image: -webkit-gradient(linear,0% 0%,0% 100%,from(#FFF),to(#E4E8EE));
+    background-image: -webkit-linear-gradient(top, #FFF, #E4E8EE);
     border-radius: 5px;
-    color: white;
+    color: #105DA5;
     font-weight: bold;
     font-family: Helvetica,Arial,sans-serif;
     height: 28px;
