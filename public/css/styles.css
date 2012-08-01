@@ -57,10 +57,10 @@ select {
 #entry-form {
     width: 1024px;
     margin: auto;
-    padding-top: 3px;
+    padding-top: 5px;
 }
 .frame {
-    padding-bottom: 3px;
+    padding-bottom: 5px;
 }
 
 /* view page */
