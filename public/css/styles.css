@@ -34,7 +34,6 @@ input[type="button"]
     font-weight: bold;
     font-family: Helvetica,Arial,sans-serif;
     height: 28px;
-    text-shadow: -1px -1px #0E599E;
 }
 select {
     border: solid 1px #BCBCBC;
