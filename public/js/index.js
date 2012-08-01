@@ -26,7 +26,7 @@ function AddNewRow(event) {
     if (event) {
         row.after($(event.target));
     } else {
-        row.append($("#entry"));
+        row.appendTo($("#entry"));
     }
     
     $("<input />").attr({type:"text",placeholder:"left text"}).addClass("left").appendTo(row);
