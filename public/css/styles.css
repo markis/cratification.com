@@ -52,7 +52,7 @@ select {
     height: 300px; 
     border: 1px solid black;
     margin: auto;
-    margin-top: 20%;
+    margin-top: 100px;
 }
 #entry-form {
     width: 1024px;
