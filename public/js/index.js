@@ -117,13 +117,11 @@ function loadHash() {
 function SaveData() {
     var data = GetData();
     $.ajax({
-        type: 'POST'
-        , url:'/animation'
-        , data: {animations:data}
-        , dataType:'json'
-        , success: function (data) { 
-            
-        }
+        type: 'POST',
+        url:'/animation',
+        data: {animations:data},
+        dataType:'json',
+        success: SaveDataComplete
     });
     return false;
 }
