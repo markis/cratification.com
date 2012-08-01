@@ -17,26 +17,32 @@ $(function() {
           "animationOut": "flyOutDown"
         }
       }
-    ]
+    ];
     new Cratify(data, $container, $ampersand);
 });
+
+function AddNewRow(event) {
+    var row = $("<div />").addClass("frame");   
+    if (event) {
+        row.after($(event.target));
+    } else {
+        row.append($("#entry"));
+    }
+    
+    $("<input />").attr({type:"text",placeholder:"left text"}).addClass("left").appendTo(row);
+    CreateInDropDown().addClass("left").appendTo(row);
+    CreateOutDropDown().addClass("left").appendTo(row);
+    
+    $("<input />").attr({type:"text",placeholder:"right text"}).addClass("right").appendTo(row);
+    CreateInDropDown().addClass("right").appendTo(row);
+    CreateOutDropDown().addClass("right").appendTo(row);
+    
+    $("<button />").html("New Frame").click(AddNewRow).appendTo(row);
+}
 
 function AddNewRowByButton(event) {
     $(event.target).parent()[0].removeChild(event.target);
     AddNewRow();
-}
-
-function AddNewRow() {
-    var form = $("<div />").addClass("frame").appendTo($("#entry"));   
-    $("<input />").attr({type:"text",placeholder:"left text"}).addClass("left").appendTo(form);
-    CreateInDropDown().addClass("left").appendTo(form);
-    CreateOutDropDown().addClass("left").appendTo(form);
-    
-    $("<input />").attr({type:"text",placeholder:"right text"}).addClass("right").appendTo(form);
-    CreateInDropDown().addClass("right").appendTo(form);
-    CreateOutDropDown().addClass("right").appendTo(form);
-    
-    $("<button />").html("New Frame").click(AddNewRowByButton).appendTo(form);
 }
 
 function CreateInDropDown() {
@@ -83,13 +89,20 @@ function GetData() {
     });
     return data;
 }
-function TestData() {
-    var data = GetData();
-    var $container = $("#test-container");
-    var $ampersand = $("#ampersand");
-    new Cratify(data, $container, $ampersand);
-    return false;
+
+function loadHash() {
+    if (window.location.hash) {
+        var $container = $("#container");
+        var $ampersand = $("#ampersand");
+        
+        var windowHeight = Math.max($(window).height(), self.innerHeight);
+        $container.css({height: windowHeight, width: $(window).width() });
+        
+        var id = window.location.hash.replace('#', '');
+        $.getJSON('/animation/' + id, function (data) { new Cratify(data, $container, $ampersand); });
+    }
 }
+
 function SaveData() {
     var data = GetData();
     $.ajax({
@@ -98,9 +111,21 @@ function SaveData() {
         , data: {animations:data}
         , dataType:'json'
         , success: function (data) { 
-            if (data.success)  
-            window.location='/view#'+data.id;  
+            
         }
     });
+    return false;
+}
+
+function SaveDataComplete(data) {
+   if (data.success)  
+        window.location='/view#'+data.id;  
+}
+
+function TestData() {
+    var data = GetData();
+    var $container = $("#test-container");
+    var $ampersand = $("#ampersand");
+    new Cratify(data, $container, $ampersand);
     return false;
 }

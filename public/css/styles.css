@@ -2,6 +2,7 @@ body,html {
     padding: 0px;
     margin: 0px;
     font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
 }
 
 input[type="text"]
@@ -31,9 +32,8 @@ input[type="button"]
     background-image: -webkit-linear-gradient(top, #FFF, #E4E8EE);
     border-radius: 5px;
     color: #105DA5;
-    font-weight: bold;
-    font-family: Helvetica,Arial,sans-serif;
     height: 28px;
+    margin: 3px;
 }
 select {
     border: solid 1px #BCBCBC;
