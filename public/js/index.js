@@ -37,8 +37,11 @@ function AddNewRow(event) {
     CreateInDropDown().addClass("right").appendTo(row);
     CreateOutDropDown().addClass("right").appendTo(row);
     
+    
     $("<button />").html("New Frame").addClass("addRow").click(AddNewRow).appendTo(row);
-    $("<button />").html("Remove Frame").addClass("removeRow").click(RemoveRow).appendTo(row);
+    if (event) {
+        $("<button />").html("Remove Frame").addClass("removeRow").click(RemoveRow).appendTo(row);
+    }
     return false;
 }
 
