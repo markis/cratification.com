@@ -51,7 +51,9 @@ function AddNewRowByButton(event) {
 }
 
 function RemoveRow(event) {
-    $(event.target).closest(".frame").parent();
+    var row = $(event.target).closest(".frame");
+    row.parent()[0].removeChild(row[0]);
+    return false;
 }
 
 function CreateInDropDown() {
