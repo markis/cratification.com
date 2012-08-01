@@ -38,6 +38,8 @@ function AddNewRow(event) {
     CreateOutDropDown().addClass("right").appendTo(row);
     
     $("<button />").html("New Frame").click(AddNewRow).appendTo(row);
+    
+    return false;
 }
 
 function AddNewRowByButton(event) {
