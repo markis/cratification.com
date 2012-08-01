@@ -27,7 +27,7 @@ function AddNewRowByButton(event) {
 }
 
 function AddNewRow() {
-    var form = $("<div />").appendTo($("#entry"));   
+    var form = $("<div />").addClass("frame").appendTo($("#entry"));   
     $("<input />").attr({type:"text",placeholder:"left text"}).addClass("left").appendTo(form);
     CreateInDropDown().addClass("left").appendTo(form);
     CreateOutDropDown().addClass("left").appendTo(form);
