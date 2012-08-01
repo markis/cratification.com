@@ -7,7 +7,6 @@ body,html {
 
 input[type="text"]
 {
-    width: 200px;
     margin: auto;   
     border: solid 1px #BCBCBC;
     -webkit-box-shadow: 0 2px 6px #ECECEC inset;
@@ -19,6 +18,7 @@ input[type="text"]
     line-height: 28px;
     margin: 0;
     padding: 0 5px;
+    width: 190px;
 }
 button,
 input[type="button"]
@@ -45,6 +45,7 @@ select {
     height: 30px;
     line-height: 30px;
     margin: 0px;
+    width: 100px;
 }
 
 /* index page */
