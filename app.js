@@ -26,15 +26,7 @@ app.configure(function(){
     app.use(express.methodOverride());
     app.use(express.favicon(__dirname + '/public/favicon.ico', {maxAge: 31557600000}));
     app.use(app.router);
-});
-
-app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
-  app.use(express.static(__dirname + '/public')); 
-});
-
-app.configure('production', function(){
-    app.enable('view cache');
+    
     app.use(express.errorHandler());
     app.use(express.static(__dirname + '/public', { maxAge: 31557600000 }));
 });
@@ -59,16 +51,12 @@ app.get('/login', function(req, res) {
     res.sendfile(__dirname + '/views/login.html');
 });
 
-app.get('/login-failed', function(req, res) {
-    res.sendfile(__dirname + '/views/login-failed.html');
-});
-
 app.post('/login', function(req, res) {
     if (req.body.password === 'Cr@t3') {
         res.cookie('valid', 'true', { expires: new Date(Date.now() + 31557600000), httpOnly: true });
         res.redirect('/');
     } else {
-        res.redirect('/login-failed'); 
+        res.redirect('/login'); 
     }
 });
 
@@ -94,6 +82,10 @@ app.get('/animation/:id', function(req, res) {
         	res.json([]);
     	}
     });
+});
+
+app.get('*', function(req, res) {
+    res.sendfile(__dirname + '/views/404.html');
 });
 
 app.listen(config.port);

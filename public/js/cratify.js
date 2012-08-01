@@ -186,7 +186,7 @@ Animations.prototype = {
                 using: function (startPos) {
                     // I am not sure why the positioning math always put the element on the right side during
                     // testing, but I compensated for it with this little winWidth and element.width() addition
-                    startPos.left = startPos.left + $container.width() + element.width();
+                    //startPos.left = startPos.left + $container.width() + element.width();
                     element.css(startPos); }
             })
             // end position
@@ -302,8 +302,8 @@ Animations.prototype = {
                 animation.element.animate({left: pos.left}, {duration:1000, queue:false, complete: completeAnimate});
             }
             animation.element.position({
-                my: "right",
-                at: "left",
+                my: "left",
+                at: "right",
                 of: $container,
                 using: animate
             });
