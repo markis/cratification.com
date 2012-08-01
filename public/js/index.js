@@ -37,14 +37,18 @@ function AddNewRow(event) {
     CreateInDropDown().addClass("right").appendTo(row);
     CreateOutDropDown().addClass("right").appendTo(row);
     
-    $("<button />").html("New Frame").click(AddNewRow).appendTo(row);
-    
+    $("<button />").html("New Frame").addClass("addRow").click(AddNewRow).appendTo(row);
+    $("<button />").html("Remove Frame").addClass("removeRow").click(RemoveRow).appendTo(row);
     return false;
 }
 
 function AddNewRowByButton(event) {
     $(event.target).parent()[0].removeChild(event.target);
     AddNewRow();
+}
+
+function RemoveRow(event) {
+    $(event.target).closest(".frame").parent();
 }
 
 function CreateInDropDown() {
