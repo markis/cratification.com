@@ -24,7 +24,7 @@ $(function() {
 function AddNewRow(event) {
     var row = $("<div />").addClass("frame");   
     if (event) {
-        row.after($(event.target).closest(".frame"));
+        row.insertAfter($(event.target).closest(".frame"));
     } else {
         row.appendTo($("#entry"));
     }
