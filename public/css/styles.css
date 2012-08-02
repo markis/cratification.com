@@ -73,7 +73,7 @@ select {
     color: red;   
 }
 .left {
-    text-align: left;   
+    text-align: right;   
 }
 .side {
     width: 200px;
