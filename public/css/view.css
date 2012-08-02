@@ -14,5 +14,16 @@ body,html {
     margin: 0px;
     padding: 0px;
     overflow: hidden;
-
+}
+#ampersand {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -15px;
+    margin-left: -150px;
+}
+* html #ampersand {
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 0px;
 }
