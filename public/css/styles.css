@@ -53,10 +53,11 @@ select {
 #test-container {
     width: 800px; 
     height: 600px; 
-    border: 10px solid BCBCBC;
+    border: 1px solid BCBCBC;
     border-radius: 15px;
     margin: auto;
     margin-top: 50px;
+    background-color: #FFF;
 }
 #entry-form {
     width: 1024px;
