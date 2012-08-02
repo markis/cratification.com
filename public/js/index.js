@@ -9,7 +9,7 @@ $(function() {
         "left": {
           "text": "Create",
           "animationIn": "flyInUp",
-          "animationOut": "flyOutLeft"
+          "animationOut": "flyOutRight"
         },
         "right": {
           "text": "your",
@@ -21,7 +21,7 @@ $(function() {
         "left": {
           "text": "own",
           "animationIn": "flyInDown",
-          "animationOut": "flyOutLeft"
+          "animationOut": "flyOutRight"
         },
         "right": {
           "text": "design",
