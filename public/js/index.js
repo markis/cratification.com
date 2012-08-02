@@ -42,14 +42,14 @@ function AddNewRow(event) {
     }
     
     var leftSide = $("<div />").addClass("left").addClass("side").appendTo(row);
-    $("<input />").attr({type:"text",placeholder:"left text"}).addClass("left").appendTo(leftSide);
+    $("<input />").attr({type:"text"}).addClass("left").appendTo(leftSide);
     CreateInDropDown().addClass("left").css({display:"none"}).appendTo(leftSide);
     CreateOutDropDown().addClass("left").css({display:"none"}).appendTo(leftSide);
     
     $("<span />").addClass("ampersand").html("&amp;").appendTo(row);
     
     var rightSide = $("<div />").addClass("right").addClass("side").appendTo(row);
-    $("<input />").attr({type:"text",placeholder:"right text"}).addClass("right").appendTo(rightSide);
+    $("<input />").attr({type:"text"}).addClass("right").appendTo(rightSide);
     CreateInDropDown().addClass("right").css({display:"none"}).appendTo(rightSide);
     CreateOutDropDown().addClass("right").css({display:"none"}).appendTo(rightSide);
     
