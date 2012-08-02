@@ -72,6 +72,9 @@ select {
 .removeRow {
     color: red;   
 }
+.left {
+    text-align: left;   
+}
 .side {
     width: 200px;
     float: left;
