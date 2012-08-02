@@ -20,13 +20,13 @@ $(function() {
       {
         "left": {
           "text": "own",
-          "animationIn": "flyInDown",
+          "animationIn": "flyInUp",
           "animationOut": "flyOutRight"
         },
         "right": {
           "text": "design",
-          "animationIn": "flyInRight",
-          "animationOut": "flyOutDown"
+          "animationIn": "flyInUp",
+          "animationOut": "flyOutLeft"
         }
       }
     ];
