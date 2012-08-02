@@ -7,12 +7,24 @@ $(function() {
     var data = [
       {
         "left": {
-          "text": "Markis",
+          "text": "Create",
           "animationIn": "flyInRight",
           "animationOut": "flyOutUp"
         },
         "right": {
-          "text": "Taylor",
+          "text": "Your Own",
+          "animationIn": "flyInLeft",
+          "animationOut": "flyOutDown"
+        }
+      },
+      {
+        "left": {
+          "text": "Crate",
+          "animationIn": "flyInRight",
+          "animationOut": "flyOutUp"
+        },
+        "right": {
+          "text": "ification",
           "animationIn": "flyInLeft",
           "animationOut": "flyOutDown"
         }
@@ -29,13 +41,17 @@ function AddNewRow(event) {
         row.appendTo($("#entry"));
     }
     
-    $("<input />").attr({type:"text",placeholder:"left text"}).addClass("left").appendTo(row);
-    CreateInDropDown().addClass("left").appendTo(row);
-    CreateOutDropDown().addClass("left").appendTo(row);
+    var leftSide = $("<div />").addClass("left").addClass("side").appendTo(row);
+    $("<input />").attr({type:"text",placeholder:"left text"}).addClass("left").appendTo(leftSide);
+    CreateInDropDown().addClass("left").css({display:"none"}).appendTo(leftSide);
+    CreateOutDropDown().addClass("left").css({display:"none"}).appendTo(leftSide);
     
-    $("<input />").attr({type:"text",placeholder:"right text"}).addClass("right").appendTo(row);
-    CreateInDropDown().addClass("right").appendTo(row);
-    CreateOutDropDown().addClass("right").appendTo(row);
+    $("<span />").html("&amp;").apappendTo(row);
+    
+    var rightSide = $("<div />").addClass("right").addClass("side").appendTo(row);
+    $("<input />").attr({type:"text",placeholder:"right text"}).addClass("right").appendTo(rightSide);
+    CreateInDropDown().addClass("right").css({display:"none"}).appendTo(rightSide);
+    CreateOutDropDown().addClass("right").css({display:"none"}).appendTo(rightSide);
     
     
     $("<button />").html("New Frame").addClass("addRow").click(AddNewRow).appendTo(row);
