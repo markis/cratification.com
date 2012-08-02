@@ -52,7 +52,7 @@ select {
 /* index page */
 #test-container {
     width: 800px; 
-    height: 600px; 
+    height: 400px; 
     border: 1px solid BCBCBC;
     border-radius: 15px;
     margin: auto;
