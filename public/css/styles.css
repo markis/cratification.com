@@ -52,6 +52,14 @@ select {
 }
 
 /* index page */
+#wrapper {
+    width: 800px; 
+    border: 1px solid BCBCBC;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 50px;
+    background-color: #BCBCBC;
+}
 #test-container {
     width: 800px; 
     height: 400px; 
