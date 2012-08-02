@@ -9,11 +9,11 @@ $(function() {
         "left": {
           "text": "Create",
           "animationIn": "flyInUp",
-          "animationOut": "flyOutUp"
+          "animationOut": "flyOutLeft"
         },
         "right": {
           "text": "your",
-          "animationIn": "flyInLeft",
+          "animationIn": "flyInRight",
           "animationOut": "flyOutDown"
         }
       },
@@ -21,11 +21,11 @@ $(function() {
         "left": {
           "text": "own",
           "animationIn": "flyInDown",
-          "animationOut": "flyOutUp"
+          "animationOut": "flyOutLeft"
         },
         "right": {
           "text": "design",
-          "animationIn": "flyInLeft",
+          "animationIn": "flyInRight",
           "animationOut": "flyOutDown"
         }
       }
