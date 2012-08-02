@@ -14,26 +14,7 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.js"></script>
 <script type="text/javascript" src="/js/cratify.js"></script>
-
-<script type="text/javascript">
-$(function() {
-    function loadHash() {
-        var id = window.location.pathname.split('/')[2];
-        if (id) {
-            var $container = $("#container");
-            var $ampersand = $("#ampersand");
-            
-            var windowHeight = Math.max($(window).height(), self.innerHeight);
-            $container.css({height: windowHeight, width: $(window).width() });
-            
-            
-            $.getJSON('/animation/' + id, function (data) { new Cratify(data, $container, $ampersand); });
-        }
-    }
-    loadHash();
-    $(window).bind('hashchange', loadHash);
-});
-</script>
+<script type="text/javascript" src="/js/view.js"></script>
 
 </body>
 </html>

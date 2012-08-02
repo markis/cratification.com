@@ -118,19 +118,6 @@ function GetData() {
     return data;
 }
 
-function loadHash() {
-    if (window.location.hash) {
-        var $container = $("#container");
-        var $ampersand = $("#ampersand");
-        
-        var windowHeight = Math.max($(window).height(), self.innerHeight);
-        $container.css({height: windowHeight, width: $(window).width() });
-        
-        var id = window.location.hash.replace('#', '');
-        $.getJSON('/animation/' + id, function (data) { new Cratify(data, $container, $ampersand); });
-    }
-}
-
 function SaveData() {
     var data = GetData();
     $.ajax({

@@ -61,10 +61,13 @@ select {
 #test-container {
     width: 800px; 
     height: 400px; 
+    background-color: #FFF;
     border: 1px solid #BCBCBC;
     border-radius: 15px;
+    font-size: 64px;
+    font-weight: bold;
     margin: auto;
-    background-color: #FFF;
+    overflow: hidden;
 }
 #entry-form {
     width: 450px;
