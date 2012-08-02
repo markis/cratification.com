@@ -16,3 +16,6 @@ body,html {
     overflow: hidden;
 }
 
+.hidden {
+    display: none;   
+}

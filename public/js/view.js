@@ -3,7 +3,7 @@ $(function() {
         var id = window.location.pathname.split('/')[2];
         if (id) {
             var $container = $("#container");
-            var $ampersand = $("#ampersand");
+            var $ampersand = $("#ampersand").removeClass('hidden');
             
             var windowHeight = Math.max($(window).height(), self.innerHeight);
             $container.css({height: windowHeight, width: $(window).width() });
