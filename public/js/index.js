@@ -1,7 +1,6 @@
 $(function() {
     AddNewRow();
-    $("<button />").html("Test").appendTo($("#entry-form")).click(TestData);
-    $("<button />").html("Save").appendTo($("#entry-form")).click(SaveData);
+    $("<button />").html("Create & Share").appendTo($("#entry-form")).click(SaveData);
     var $container = $("#test-container");
     var $ampersand = $("#ampersand");
     var data = [
