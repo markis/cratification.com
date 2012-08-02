@@ -20,7 +20,7 @@ $(function() {
       {
         "left": {
           "text": "own",
-          "animationIn": "flyInUp",
+          "animationIn": "flyInLeft",
           "animationOut": "flyOutRight"
         },
         "right": {
