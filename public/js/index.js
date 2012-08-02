@@ -7,18 +7,6 @@ $(function() {
     var data = [
       {
         "left": {
-          "text": "Create your",
-          "animationIn": "flyInUp",
-          "animationOut": "stop"
-        },
-        "right": {
-          "text": "own story",
-          "animationIn": "flyInRight",
-          "animationOut": "stop"
-        }
-      },
-      {
-        "left": {
           "text": "Crate",
           "animationIn": "flyInLeft",
           "animationOut": "flyOutLeft"
@@ -27,6 +15,18 @@ $(function() {
           "text": "Barrel",
           "animationIn": "flyInUp",
           "animationOut": "flyOutLeft"
+        }
+      },
+      {
+        "left": {
+          "text": "Create your",
+          "animationIn": "flyInUp",
+          "animationOut": "stop"
+        },
+        "right": {
+          "text": "own story",
+          "animationIn": "flyInRight",
+          "animationOut": "stop"
         }
       }
     ];
