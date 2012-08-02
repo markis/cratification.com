@@ -3,7 +3,6 @@ body,html {
     margin: 0px;
     font-family: Helvetica, Arial, sans-serif;
     color: #000;
-    background-image: url('/img/tex2res1.png');
 }
 
 input[type="text"]
