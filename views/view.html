@@ -18,14 +18,15 @@
 <script type="text/javascript">
 $(function() {
     function loadHash() {
-        if (window.location.hash) {
+        var id = window.location.pathname.split('/')[2];
+        if (id) {
             var $container = $("#container");
             var $ampersand = $("#ampersand");
             
             var windowHeight = Math.max($(window).height(), self.innerHeight);
             $container.css({height: windowHeight, width: $(window).width() });
             
-            var id = window.location.pathname.split('/')[2];
+            
             $.getJSON('/animation/' + id, function (data) { new Cratify(data, $container, $ampersand); });
         }
     }
