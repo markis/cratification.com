@@ -25,7 +25,7 @@ $(function() {
             var windowHeight = Math.max($(window).height(), self.innerHeight);
             $container.css({height: windowHeight, width: $(window).width() });
             
-            var id = window.location.hash.replace('#', '');
+            var id = window.location.pathname.split('/')[2];
             $.getJSON('/animation/' + id, function (data) { new Cratify(data, $container, $ampersand); });
         }
     }

@@ -43,7 +43,7 @@ app.get('/', function(req, res) {
     res.sendfile(__dirname + '/views/index.html');
 });
 
-app.get('/view', function(req, res) {
+app.get('/view/:id', function(req, res) {
     res.sendfile(__dirname + '/views/view.html');
 });
 

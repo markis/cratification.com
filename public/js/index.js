@@ -42,16 +42,17 @@ function AddNewRow(event) {
     }
     
     var leftSide = $("<div />").addClass("left").addClass("side").appendTo(row);
+    CreateInDropDown().addClass("left").appendTo(leftSide);
+    CreateOutDropDown().addClass("left").appendTo(leftSide);
     $("<input />").attr({type:"text"}).addClass("left").appendTo(leftSide);
-    CreateInDropDown().addClass("left").css({display:"none"}).appendTo(leftSide);
-    CreateOutDropDown().addClass("left").css({display:"none"}).appendTo(leftSide);
+
     
     $("<span />").addClass("ampersand").html("&amp;").appendTo(row);
     
     var rightSide = $("<div />").addClass("right").addClass("side").appendTo(row);
     $("<input />").attr({type:"text"}).addClass("right").appendTo(rightSide);
-    CreateInDropDown().addClass("right").css({display:"none"}).appendTo(rightSide);
-    CreateOutDropDown().addClass("right").css({display:"none"}).appendTo(rightSide);
+    CreateInDropDown().addClass("right").appendTo(rightSide);
+    CreateOutDropDown().addClass("right").appendTo(rightSide);
     
     
     $("<button />").html("New Frame").addClass("addRow").click(AddNewRow).appendTo(row);
@@ -144,7 +145,7 @@ function SaveData() {
 
 function SaveDataComplete(data) {
    if (data.success)  
-        window.location='/view#'+data.id;  
+        window.location='/view/'+data.id;  
 }
 
 function TestData() {
