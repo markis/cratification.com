@@ -7,24 +7,24 @@ $(function() {
     var data = [
       {
         "left": {
-          "text": "Create",
+          "text": "Create your",
           "animationIn": "flyInUp",
           "animationOut": "flyOutRight"
         },
         "right": {
-          "text": "your",
+          "text": "own design",
           "animationIn": "flyInRight",
           "animationOut": "flyOutDown"
         }
       },
       {
         "left": {
-          "text": "own",
+          "text": "Crate",
           "animationIn": "flyInLeft",
           "animationOut": "flyOutRight"
         },
         "right": {
-          "text": "design",
+          "text": "Barrel",
           "animationIn": "flyInUp",
           "animationOut": "flyOutLeft"
         }
