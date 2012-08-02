@@ -3,7 +3,7 @@ function Cratify(data, container, ampersand, autoRun, animationsObj) {
     this.$container = container ? container : $("<div />").css({"overflow": "hidden", width: $(window).width(), height: $(window).height() }).appendTo("body");
     this.$ampersand = ampersand ? ampersand : $("<span />").html("&").css({position:"relative"}).appendTo(this.$container);
     //winHeight = $container.height();
-    this.$container.css({"overflow": "hidden", fontFamily:"helvetica", fontWeight: "bold", fontSize: 120});
+    this.$container.css({"overflow": "hidden", fontFamily:"helvetica", fontWeight: "bold", fontSize: 72});
     this.$ampersand.css("position", "absolute");
     this.$ampersand.position({
         my: "center",
