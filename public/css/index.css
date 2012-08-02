@@ -70,11 +70,12 @@ select {
     overflow: hidden;
 }
 #entry-form {
-    margin: auto;
+    margin: 5px;
     padding-top: 5px;
 }
 .frame {
     padding-bottom: 5px;
+    clear: both;
 }
 .removeRow {
     color: red;   
