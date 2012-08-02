@@ -9,19 +9,19 @@ $(function() {
         "left": {
           "text": "Create your",
           "animationIn": "flyInUp",
-          "animationOut": "flyOutRight"
+          "animationOut": "stop"
         },
         "right": {
-          "text": "own design",
+          "text": "own story",
           "animationIn": "flyInRight",
-          "animationOut": "flyOutDown"
+          "animationOut": "stop"
         }
       },
       {
         "left": {
           "text": "Crate",
           "animationIn": "flyInLeft",
-          "animationOut": "flyOutRight"
+          "animationOut": "flyOutLeft"
         },
         "right": {
           "text": "Barrel",

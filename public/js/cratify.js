@@ -199,49 +199,6 @@ Animations.prototype = {
             .animate({left: endPos.left}, {duration:1000, queue:false, complete: next});
         },
 
-        flyInSlot : function(animation, $container, $ampersand, next) {
-            var endPos, bottomPos, topPos;
-            var element = animation.element = $("<span />").html(animation.text).css({visibility:"hidden",position:"relative"}).appendTo($container);
-            element
-            .position({
-                my: animation.leftRight==='right'?"left center":"right center",
-                at: animation.leftRight==='right'?"right center":"left center",
-                of: $ampersand,
-                using: function (pos) { endPos = pos; }
-            })
-            // bottom of the container position
-            .position({
-                my: "bottom",
-                at: "top",
-                of: $container,
-                using: function (pos) { bottomPos = pos; }
-            })
-            // top of the container position
-            .position({
-                my: "top",
-                at: "bottom",
-                of: $container,
-                using: function (pos) { topPos = pos; }
-            })
-            .css({visibility:"visible", left: endPos.left, top: topPos.top })
-                .animate({left: endPos.left},
-                   {duration:200, queue:false, complete: function() {
-                       element.css({top: topPos.top })
-                       .animate({top: bottomPos.top},
-                            {duration:200, queue:false, complete: function() {
-                                element.css({top: topPos.top })
-                                .animate({top: bottomPos.top},
-                                    {duration:200, queue:false, complete: function() {
-                                        element.css({top: topPos.top })
-                                        .animate({top: endPos.top},
-                                            {duration:200, queue:false, complete: function() {
-                                                next();
-                                        }});
-                                }});
-                       }});
-                }});
-        },
-
         fadeIn : function(animation, $container, $ampersand, next) {
             animation.element = $("<span />").html(animation.text).css({position:"relative"}).appendTo($container)
             .position({
@@ -333,6 +290,10 @@ Animations.prototype = {
                 $container[0].removeChild(element[0]);
                 next();
             });
+        },
+        
+        stop : function (animation, $container, $ampersand, next) {
+            
         }
     }
 };
