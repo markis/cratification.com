@@ -8,23 +8,23 @@ $(function() {
       {
         "left": {
           "text": "Create",
-          "animationIn": "flyInRight",
+          "animationIn": "flyInUp",
           "animationOut": "flyOutUp"
         },
         "right": {
-          "text": "Your Own",
+          "text": "your",
           "animationIn": "flyInLeft",
           "animationOut": "flyOutDown"
         }
       },
       {
         "left": {
-          "text": "Crate",
-          "animationIn": "flyInRight",
+          "text": "own",
+          "animationIn": "flyInDown",
           "animationOut": "flyOutUp"
         },
         "right": {
-          "text": "ification",
+          "text": "design",
           "animationIn": "flyInLeft",
           "animationOut": "flyOutDown"
         }
