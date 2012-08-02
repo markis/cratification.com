@@ -87,6 +87,10 @@ select {
     width: 200px;
     float: left;
 }
+.options {
+    width: 100px;
+    float: left;
+}
 .ampersand {
     font-family: helvetica;
     font-weight: bold;
