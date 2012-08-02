@@ -56,7 +56,7 @@ function AddNewRow(event) {
     CreateInDropDown().addClass("right").appendTo(rightoptions);
     CreateOutDropDown().addClass("right").appendTo(rightoptions);
     
-    
+    $("<div />").css({clear:"both"}).appendTo(row);
     $("<button />").html("New Frame").addClass("addRow").click(AddNewRow).appendTo(row);
     if (event) {
         $("<button />").html("Remove Frame").addClass("removeRow").click(RemoveRow).appendTo(row);
