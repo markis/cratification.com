@@ -52,8 +52,9 @@ function AddNewRow(event) {
     
     var rightSide = $("<div />").addClass("right").addClass("side").appendTo(row);
     $("<input />").attr({type:"text"}).addClass("right").appendTo(rightSide);
-    CreateInDropDown().addClass("right").appendTo(rightSide);
-    CreateOutDropDown().addClass("right").appendTo(rightSide);
+    var rightoptions = $("<div />").addClass("right").addClass("options").appendTo(row);
+    CreateInDropDown().addClass("right").appendTo(rightoptions);
+    CreateOutDropDown().addClass("right").appendTo(rightoptions);
     
     
     $("<button />").html("New Frame").addClass("addRow").click(AddNewRow).appendTo(row);
