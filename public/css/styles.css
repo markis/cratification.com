@@ -61,7 +61,7 @@ select {
 #test-container {
     width: 800px; 
     height: 400px; 
-    border: 1px solid BCBCBC;
+    border: 1px solid #BCBCBC;
     border-radius: 15px;
     margin: auto;
     background-color: #FFF;
