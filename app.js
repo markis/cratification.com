@@ -63,6 +63,7 @@ app.post('/login', function(req, res) {
 app.post('/animation', function(req, res) {
     dataprovider.save(req.body, function (err, data) {
         if (err) {
+            console.log(err);
             res.json({success:false});
         } else {
             res.json({success:true, id:data.id});
@@ -78,6 +79,7 @@ app.get('/animation/:id', function(req, res) {
         }
         else
     	{
+            console.log(err);
             res.statusCode = 404;
         	res.json([]);
     	}

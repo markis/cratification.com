@@ -1,7 +1,7 @@
 var assetHandler = require('connect-assetmanager-handlers')
 
 var settings = {
-    'port': 8080
+    'port': 8082
 	, 'uri': 'http://localhost:8080' // Without trailing /
 	, 'assets' : {
 		'js': {
