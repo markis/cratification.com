@@ -57,11 +57,11 @@ app.get('/animation/:id', function(req, res) {
             res.json(data.animations);
         }
         else
-    	{
+        {
             console.log(err);
             res.statusCode = 404;
-        	res.json([]);
-    	}
+            res.json([]);
+        }
     });
 });
 
