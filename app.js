@@ -31,33 +31,12 @@ app.configure(function(){
     app.use(express.static(__dirname + '/public', { maxAge: 31557600000 }));
 });
 
-app.get('*', function(req, res, next) {
-   if (req.cookies.valid !== 'true' && req.url.indexOf('/login') !== 0) {
-       res.redirect('/login');
-   } else {
-        next();   
-   }
-});
-
 app.get('/', function(req, res) {
     res.sendfile(__dirname + '/views/index.html');
 });
 
 app.get('/view/:id', function(req, res) {
     res.sendfile(__dirname + '/views/view.html');
-});
-
-app.get('/login', function(req, res) {
-    res.sendfile(__dirname + '/views/login.html');
-});
-
-app.post('/login', function(req, res) {
-    if (req.body.password === 'Cr@t3') {
-        res.cookie('valid', 'true', { expires: new Date(Date.now() + 31557600000), httpOnly: true });
-        res.redirect('/');
-    } else {
-        res.redirect('/login'); 
-    }
 });
 
 app.post('/animation', function(req, res) {
